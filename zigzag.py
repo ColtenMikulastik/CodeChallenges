@@ -1,5 +1,10 @@
 
 
+def print_mat(matrix):
+    for sub_list in matrix:
+        print(sub_list)
+
+
 matrix = []
 
 
@@ -20,8 +25,22 @@ for i in range(0, k):
 
 print(matrix)
 
-# index_x = 0
-# index_y = 0
-#
-# for character in in_string:
-#     matrix[index_x][index_y] = character
+index_x = 0
+index_y = 0
+do_go_up = False
+
+for character in in_string:
+    print_mat(matrix)
+    print("-------------")
+    matrix[index_x][index_y] = character
+    if index_x == 0:
+        do_go_up = False
+    if index_x == (k - 1) or do_go_up:
+        index_x = index_x - 1
+        index_y = index_y + 1
+        do_go_up = True
+    else:
+        index_x = index_x + 1
+
+
+print_mat(matrix)
