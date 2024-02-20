@@ -8,7 +8,8 @@ def print_mat(matrix):
 matrix = []
 
 
-in_string = input("what would you like to have zig zagged?")
+# in_string = input("what would you like to have zig zagged?")
+in_string = "bebadabadabobebadabadabobebad"
 
 k = 4
 
