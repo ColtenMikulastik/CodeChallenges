@@ -22,8 +22,8 @@ int reverse(int in)
 	int real_place {};
 	for(int i{decimal_places}; i >= 0; i--)
 	{
-		int place_val = in / pow(10, i);
-		in = in - (place_val * pow(10,i));
+		int place_val = in / pow(10, i - 1);
+		in = in - (place_val * pow(10,i - 1));
 		std::cout << "input value now: " << in << std::endl;
 		std::cout << "place value found: " << place_val << std::endl;
 		out = (place_val * pow(10,real_place)) + out;
@@ -32,7 +32,7 @@ int reverse(int in)
 		std::cout << "real place is: " << real_place << std::endl;
 		std::cout << "--------------"<< std::endl;
 	}
-	return out / 10;
+	return out;
 }
 
 int main()
