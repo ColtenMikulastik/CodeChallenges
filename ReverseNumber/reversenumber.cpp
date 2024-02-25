@@ -37,6 +37,7 @@ int reverse(int in)
 
 int main()
 {
+	std::cout << "hi welcome to the reverse number program" << std::endl;
 	while(true)
 	{
 		int val;
