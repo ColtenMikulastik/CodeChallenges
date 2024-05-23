@@ -1,7 +1,12 @@
 
-run: zigzag.exe
-	#======running======
-	./zigzag.exe
+run:output.exe
+	./output.exe
 
-zigzag.exe: zigzag.cpp
-	g++ zigzag.cpp -g -o zigzag.exe
+output.exe:zigzag.cpp
+	g++ ./zigzag.cpp -o output.exe
+
+zigzag.cpp:
+	echo "zigzag.cpp file doesn't exist... cannot build program"
+
+clean:
+	rm -rf ./output.exe

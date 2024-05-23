@@ -68,8 +68,10 @@ int main()
 {
 	std::string input {};
 	int k = 5;
-
+	std::cout << "Please give a string to zigzag: ";
 	std::cin >> input;
+	std::cout << "Please give a number to zig and zag to: ";
+	std::cin >> k;
 	Solution test(input, k);
 	test.zig_n_zag();
 	test.print_zig_string();
