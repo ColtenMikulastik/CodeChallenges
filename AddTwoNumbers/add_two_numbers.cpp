@@ -39,11 +39,13 @@ class Node
 void print_node_list(Node *node_index)
 {
 	int node_number {1};
-	while( node_index->get_next_node() != nullptr )
+	do
 	{
 		std::cout << node_number << "(st/nd) node's value is: " << node_index->get_value() << std::endl;
 		node_index = node_index->get_next_node();
+		node_number++;
 	}
+	while( node_index != nullptr );
 }
 
 
