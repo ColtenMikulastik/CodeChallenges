@@ -2,8 +2,33 @@
 
 #include <iostream>
 
+class Line
+{
+	private:
+		double slope, y_intercept;
 
-bool background(int height, int width)
+	public:
+		Line(double temp_slope, double temp_y_intercept)
+		{
+			temp_slope = this->slope;
+			temp_y_intercept = this->y_intercept;
+		}
+		bool at_point(int x, int y)
+		{
+			if (y <= (this->slope * x) + this->y_intercept )
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		~Line(){}
+
+};
+
+bool background(int height, int width, Line drawme)
 {
 	// prints the boarder
 	// print top boarder
@@ -20,7 +45,16 @@ bool background(int height, int width)
 		// print space inbetween
 		for(int x{1}; x <= width; x++)
 		{
-			std::cout << " ";
+
+			if (drawme.at_point(x,y))
+			{
+				std::cout << '0';
+			}
+			else
+			{
+				std::cout << ' ';
+			}
+
 		}
 		std::cout << "X" << std::endl;
 	}
@@ -37,5 +71,7 @@ bool background(int height, int width)
 
 int main()
 {
-	background(40, 40);
+	Line thing(1,0);
+	background(40, 40, thing);
+
 }
