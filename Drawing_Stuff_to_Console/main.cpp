@@ -15,7 +15,7 @@ class Line
 		}
 		bool at_point(int x, int y)
 		{
-			if (y <= (this->slope * x) + this->y_intercept )
+			if (y == (this->slope * x) + this->y_intercept )
 			{
 				return true;
 			}
@@ -28,7 +28,32 @@ class Line
 
 };
 
-bool background(int height, int width, Line drawme)
+class Point
+{
+	private:
+		int x, y;
+	public:
+		Point(int t_x, int t_y)
+		{
+			this->x = t_x;
+			this->y = t_y;
+		}
+		
+		bool at_point(int x, int y)
+		{
+			if( y == this->y && x == this->x)
+			{
+				return true;
+			}
+			else 
+			{
+				return false;
+			}
+		}
+		~Point(){}
+};
+
+bool background(int height, int width, Point drawme)
 {
 	// prints the boarder
 	// print top boarder
@@ -71,7 +96,7 @@ bool background(int height, int width, Line drawme)
 
 int main()
 {
-	Line thing(1,0);
+	Point thing(5,5);
 	background(40, 40, thing);
 
 }
