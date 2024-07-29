@@ -96,7 +96,7 @@ bool background(int height, int width, Point drawme)
 
 int main()
 {
-	Point thing(4,4);
+	Point thing(0,0);
 	background(4, 4, thing);
 
 }

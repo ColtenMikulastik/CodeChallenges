@@ -10,3 +10,9 @@ main.exe: main.cpp
 
 clean:
 	rm -rf ./main.exe
+
+
+c: main.cpp
+	g++ ./main.cpp -o ./main.exe
+	./main.exe
+	rm -rf ./main.exe
