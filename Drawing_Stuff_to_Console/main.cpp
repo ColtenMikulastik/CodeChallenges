@@ -1,6 +1,8 @@
 
 
 #include <iostream>
+#include <cmath>
+
 
 class Line
 {
@@ -15,7 +17,7 @@ class Line
 		}
 		bool at_point(int x, int y)
 		{
-			if (y == (this->slope * x) + this->y_intercept )
+			if (y == round((this->slope * x)) + round(this->y_intercept))
 			{
 				return true;
 			}
@@ -96,6 +98,6 @@ bool background(int height, int width, Line drawme)
 
 int main()
 {
-	Line thing(.25, 1);
+	Line thing(.333, .4);
 	background(20, 30, thing);
 }
