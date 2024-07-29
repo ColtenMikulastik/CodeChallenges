@@ -10,8 +10,8 @@ class Line
 	public:
 		Line(double temp_slope, double temp_y_intercept)
 		{
-			temp_slope = this->slope;
-			temp_y_intercept = this->y_intercept;
+			this->slope = temp_slope;
+			this->y_intercept = temp_y_intercept;
 		}
 		bool at_point(int x, int y)
 		{
@@ -53,7 +53,7 @@ class Point
 		~Point(){}
 };
 
-bool background(int height, int width, Point drawme)
+bool background(int height, int width, Line drawme)
 {
 	// prints the boarder
 	// print top boarder
@@ -96,7 +96,6 @@ bool background(int height, int width, Point drawme)
 
 int main()
 {
-	Point thing(0,0);
-	background(4, 4, thing);
-
+	Line thing(.25, 1);
+	background(20, 30, thing);
 }
