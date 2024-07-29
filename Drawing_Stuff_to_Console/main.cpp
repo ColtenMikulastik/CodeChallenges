@@ -64,7 +64,7 @@ bool background(int height, int width, Point drawme)
 	std::cout << std::endl;
 	
 	// start the rest of the boarder
-	for(int y{1}; y <= height; y++)
+	for(int y{height}; y > 0; y--)
 	{
 		std::cout << "X";
 		// print space inbetween
@@ -96,7 +96,7 @@ bool background(int height, int width, Point drawme)
 
 int main()
 {
-	Point thing(5,5);
-	background(40, 40, thing);
+	Point thing(4,4);
+	background(4, 4, thing);
 
 }
