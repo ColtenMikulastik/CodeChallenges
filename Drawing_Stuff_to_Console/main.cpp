@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <vector>
 
 
 class Drawable
@@ -65,7 +66,7 @@ class Point: public Drawable
 		~Point(){}
 };
 
-bool background(int height, int width, Drawable *drawme)
+bool drawing(int height, int width, Drawable **drawme)
 {
 	// prints the boarder
 	// print top boarder
@@ -83,7 +84,15 @@ bool background(int height, int width, Drawable *drawme)
 		for(int x{1}; x <= width; x++)
 		{
 
-			if (drawme->at_point(x,y))
+			if (drawme[0]->at_point(x,y))
+			{
+				std::cout << '0';
+			}
+			else if (drawme[1]->at_point(x,y))
+			{
+				std::cout << '0';
+			}
+			else if (drawme[2]->at_point(x,y))
 			{
 				std::cout << '0';
 			}
@@ -108,8 +117,17 @@ bool background(int height, int width, Drawable *drawme)
 
 int main()
 {
-	Drawable *thing;
-	thing = new Point(3, 3);
-	background(20, 30, thing);
+	int size = 3;
+	Drawable **thing = new Drawable*[size];
+	thing[0] = new Line(3,0);
+	thing[1] = new Point(10, 10);
+	thing[2] = new Line(0, 4);
+
+	drawing(20, 30, thing);
+
+	for(int i{}; i < size; i++)
+	{
+		delete thing[i];
+	}
 	delete [] thing;
 }
