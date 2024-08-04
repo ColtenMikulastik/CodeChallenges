@@ -4,7 +4,17 @@
 #include <cmath>
 
 
-class Line
+class Drawable
+{
+	public:
+		virtual bool at_point(int x, int y)
+		{
+			std::cout << "this will be inheritied" << std::endl;
+			return false;
+		}
+};
+
+class Line: public Drawable
 {
 	private:
 		double slope, y_intercept;
@@ -30,7 +40,7 @@ class Line
 
 };
 
-class Point
+class Point: public Drawable
 {
 	private:
 		int x, y;
@@ -55,7 +65,7 @@ class Point
 		~Point(){}
 };
 
-bool background(int height, int width, Line drawme)
+bool background(int height, int width, Drawable *drawme)
 {
 	// prints the boarder
 	// print top boarder
@@ -73,7 +83,7 @@ bool background(int height, int width, Line drawme)
 		for(int x{1}; x <= width; x++)
 		{
 
-			if (drawme.at_point(x,y))
+			if (drawme->at_point(x,y))
 			{
 				std::cout << '0';
 			}
@@ -98,6 +108,8 @@ bool background(int height, int width, Line drawme)
 
 int main()
 {
-	Line thing(.333, .4);
+	Drawable *thing;
+	thing = new Point(3, 3);
 	background(20, 30, thing);
+	delete [] thing;
 }
