@@ -8,8 +8,13 @@ run: main.exe
 main.exe: main.cpp
 	g++ ./main.cpp -o ./main.exe
 
+gdb: 
+	g++ -g ./main.cpp -o ./test
+	gdb ./test
+
 clean:
 	rm -rf ./main.exe
+	rm -rf ./test
 
 
 c: main.cpp

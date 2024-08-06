@@ -66,7 +66,7 @@ class Point: public Drawable
 		~Point(){}
 };
 
-bool drawing(int height, int width, Drawable **drawme)
+bool drawing(int height, int width, Drawable **drawme, int size)
 {
 	// prints the boarder
 	// print top boarder
@@ -83,22 +83,18 @@ bool drawing(int height, int width, Drawable **drawme)
 		// print space inbetween
 		for(int x{1}; x <= width; x++)
 		{
-
-			if (drawme[0]->at_point(x,y))
+			// int check_count {1};
+			for(int i {}; i < size; i++)
 			{
-				std::cout << '0';
-			}
-			else if (drawme[1]->at_point(x,y))
-			{
-				std::cout << '0';
-			}
-			else if (drawme[2]->at_point(x,y))
-			{
-				std::cout << '0';
-			}
-			else
-			{
-				std::cout << ' ';
+				// check_count++;
+				if(drawme[i]->at_point(x,y))
+				{
+					std::cout << '0';
+					break;
+				}
+				else {
+					std::cout << ' ';
+				}
 			}
 
 		}
@@ -149,7 +145,7 @@ int main()
 		}
 	}
 
-	drawing(20, 30, thing);
+	drawing(20, 30, thing, size);
 
 	for(int i{}; i < size; i++)
 	{
