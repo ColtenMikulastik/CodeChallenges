@@ -117,11 +117,37 @@ bool drawing(int height, int width, Drawable **drawme)
 
 int main()
 {
-	int size = 3;
-	Drawable **thing = new Drawable*[size];
-	thing[0] = new Line(3,0);
-	thing[1] = new Point(10, 10);
-	thing[2] = new Line(0, 4);
+	int size = 1;
+	std::cout << "how many lines do you want to draw?: ";
+	std::cin >> size;
+
+	Drawable **thing = new Drawable *[size];
+	for (int i{}; i < size; i++)
+	{
+		char choice {};
+		std::cout << "Line or point? (l/p):";
+		std::cin >> choice;
+		if ( choice == 'l' )
+		{
+			double slope {}, y_int{};
+			std::cout << "what would you like the slope to be?" << std::endl;
+			std::cin >> slope;
+			std::cout << "what would you like the y_int to be?" << std::endl;
+			std::cin >> y_int;
+
+			thing[i] = new Line(slope, y_int);
+		}
+		else if ( choice == 'p' )
+		{
+			double x {}, y {};
+			std::cout << "what would like your x value to be?" << std::endl;
+			std::cin >> x;
+			std::cout << "what would like your y value to be?" << std::endl;
+			std::cin >> y;
+			
+			thing[i] = new Point(x,y);
+		}
+	}
 
 	drawing(20, 30, thing);
 
