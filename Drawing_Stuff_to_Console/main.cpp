@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <cmath>
-#include <vector>
 
 
 class Drawable
@@ -83,20 +82,24 @@ bool drawing(int height, int width, Drawable **drawme, int size)
 		// print space inbetween
 		for(int x{1}; x <= width; x++)
 		{
-			// int check_count {1};
+			bool is_occupied {false};
+			// loop through all the elements of list
 			for(int i {}; i < size; i++)
 			{
-				// check_count++;
 				if(drawme[i]->at_point(x,y))
 				{
 					std::cout << '0';
+					is_occupied = true;
 					break;
 				}
-				else {
-					std::cout << ' ';
-				}
 			}
-
+			// if there was not a successful hit in the elements
+			// print blank space
+			if ( !is_occupied )
+			{
+				std::cout <<  ' ';
+			}
+			
 		}
 		std::cout << "X" << std::endl;
 	}
