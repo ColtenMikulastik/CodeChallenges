@@ -176,25 +176,34 @@ class LinkedList
 	}
 
 };
-//
-//
-// LinkedList *linkedlist_ify(int numbers [3], LinkedList *list)
-// {
-//     for( int i {}; i < 3 ; i++ )
-//     {
-// 	
-//     }
-//     
-// }
-//
+
+LinkedList *linkedlist_ify(int numbers [3], LinkedList *list)
+{
+    for( int i {}; i < 3 ; i++ )
+    {
+	// add the number as a node
+	list->addnode(numbers[i]);
+    }
+
+    return list;
+}
+
 
 int main()
 {
-    LinkedList test;
-    test.addnode(10);
-    test.printlist();
-    test.removenode(10);
-    test.printlist();
+    LinkedList *test1 = new LinkedList;
+    int numbers1[3] = { 1,2,3 };
+    LinkedList *test2 = new LinkedList;
+    int numbers2[3] = { 4,5,6 };
 
+    linkedlist_ify(numbers1, test1);
+    linkedlist_ify(numbers2, test2);
+
+    test1->printlist();
+    test2->printlist();
+
+    delete test1;
+    delete test2;
+    
     return 0;
 }
