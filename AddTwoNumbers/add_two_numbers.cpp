@@ -4,33 +4,33 @@
 // luca's stuff
 class Node 
 {
-	private:
-		Node *next_node {};
-		int value {};
-	public:
-		Node(int value, Node *next_node=nullptr)
-		{
-			this->value=value;
-			this->next_node=next_node;
-		}
-		void set_value(int t_value)
-		{
-			this->value = t_value;
-		}
+    private:
+	Node *next_node {};
+	int value {};
+    public:
+	Node(int value, Node *next_node=nullptr)
+	{
+	    this->value=value;
+	    this->next_node=next_node;
+	}
+	void set_value(int t_value)
+	{
+	    this->value = t_value;
+	}
 
-		void set_next_node(Node *t_next_node)
-		{
-			this->next_node = t_next_node;
-		}
-		
-		int get_value()
-		{	
-			return this->value;
-		}
-		Node *get_next_node()
-		{
-			return this->next_node;
-		}
+	void set_next_node(Node *t_next_node)
+	{
+	    this->next_node = t_next_node;
+	}
+	
+	int get_value()
+	{	
+	    return this->value;
+	}
+	Node *get_next_node()
+	{
+	    return this->next_node;
+	}
 
 };
 
@@ -45,6 +45,10 @@ class LinkedList
 	    // start list by creating node, and pointing to it
 	    this->first_node = new Node(t_x, t_ptr);
 	    std::cout << "list created!" << std::endl;
+	}
+	LinkedList()
+	{
+	    this->first_node = nullptr;
 	}
 	void printlist()
 	{
@@ -76,8 +80,18 @@ class LinkedList
 		nextnode = thisnode->get_next_node();
 	    }
 	    // list(node(10)-> node(20)-> null)
-	    // append node to end of list
-	    thisnode->set_next_node(newnode);
+	    
+	    // check if there was nothign in the list
+	    if ( nextnode == nullptr && thisnode == nullptr )
+	    {
+		// set to first node if no prior node
+		this->first_node = newnode;
+	    }
+	    else
+	    {
+		// append node to end of list
+		thisnode->set_next_node(newnode);
+	    }
 	    // newnode already has nullptr set done!
 	    std::cout << "added new node..." << std::endl;
 
@@ -88,6 +102,12 @@ class LinkedList
 	    // loop through list, and look for x value and remove it...
 	    Node* nextnode = this->first_node;
 	    
+	    if (nextnode == nullptr)
+	    {
+		// there is nothign to be done:
+		return;
+	    }
+
 	    if (nextnode->get_value() == x)
 	    {
 		// then the first node is the value
@@ -156,25 +176,25 @@ class LinkedList
 	}
 
 };
-
-
-void print_node_list(Node *node_index)
-{
-	int node_number {1};
-	do
-	{
-		std::cout << node_number << "(st/nd) node's value is: " << node_index->get_value() << std::endl;
-		node_index = node_index->get_next_node();
-		node_number++;
-	}
-	while( node_index != nullptr );
-}
-
+//
+//
+// LinkedList *linkedlist_ify(int numbers [3], LinkedList *list)
+// {
+//     for( int i {}; i < 3 ; i++ )
+//     {
+// 	
+//     }
+//     
+// }
+//
 
 int main()
 {
-	LinkedList test(10);
-	test.addnode(20);
-	test.addnode(30);
-	test.printlist();
+    LinkedList test;
+    test.addnode(10);
+    test.printlist();
+    test.removenode(10);
+    test.printlist();
+
+    return 0;
 }

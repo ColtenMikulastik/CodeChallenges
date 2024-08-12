@@ -11,4 +11,4 @@ gdb:
 	gdb ./test.exe
 
 clean:
-	rm -rf ./add_two_numbers.exe
+	rm -rf ./*.exe
