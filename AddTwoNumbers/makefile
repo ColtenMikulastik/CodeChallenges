@@ -12,3 +12,6 @@ gdb:
 
 clean:
 	rm -rf ./*.exe
+
+c: run
+	rm -rf ./*.exe

@@ -154,6 +154,29 @@ class LinkedList
 		}
 	    }
 	}
+	int value_at_node(int node_num)
+	{
+	    Node *this_node = nullptr;
+	    Node *next_node = this->first_node;
+	    int i {};
+	    
+	    while(next_node != nullptr && i < node_num)
+	    {
+		// walk the node
+		this_node = next_node;
+		next_node = next_node->get_next_node();
+		i++;
+	    }
+	    // make sure list isn't empty
+	    if(this_node != nullptr && next_node != nullptr)
+	    {
+		return this_node->get_value();
+	    }
+	    else
+	    {
+		return 0;
+	    }
+	}
 
 	~LinkedList()
 	{
@@ -177,17 +200,19 @@ class LinkedList
 
 };
 
-LinkedList *linkedlist_ify(int numbers [3], LinkedList *list)
+void linkedlist_ify(int numbers [3], LinkedList *list)
 {
     for( int i {}; i < 3 ; i++ )
     {
 	// add the number as a node
 	list->addnode(numbers[i]);
     }
-
-    return list;
 }
 
+void add_these_two(LinkedList *left, LinkedList *right,LinkedList *result)
+{
+    
+}
 
 int main()
 {
@@ -195,15 +220,19 @@ int main()
     int numbers1[3] = { 1,2,3 };
     LinkedList *test2 = new LinkedList;
     int numbers2[3] = { 4,5,6 };
+    LinkedList *result = new LinkedList;
 
     linkedlist_ify(numbers1, test1);
     linkedlist_ify(numbers2, test2);
 
     test1->printlist();
     test2->printlist();
+    
+    int value = test1->value_at_node(1);
 
     delete test1;
     delete test2;
+    delete result;
     
     return 0;
 }
