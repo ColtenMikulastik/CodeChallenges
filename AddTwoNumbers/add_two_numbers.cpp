@@ -202,7 +202,7 @@ class LinkedList
 
 void linkedlist_ify(int numbers [3], LinkedList *list)
 {
-    for( int i {}; i < 3 ; i++ )
+    for( int i {}; i < 3; i++ )
     {
 	// add the number as a node
 	list->addnode(numbers[i]);
@@ -211,27 +211,37 @@ void linkedlist_ify(int numbers [3], LinkedList *list)
 
 void add_these_two(LinkedList *left, LinkedList *right,LinkedList *result)
 {
-    
+    // start at end of list and work back
+    int length_of_lists = 3;
+    int now_round{};
+    int result_array [3];
+    for( int i{length_of_lists}; i >= 1; i-- )
+    {
+	int next_round {};
+	// calculate rounding value
+	next_round = (left->value_at_node(i) + right->value_at_node(i) + now_round) / 10;
+	result_array[i-1] = (left->value_at_node(i) + right->value_at_node(i) + now_round) % 10;
+	now_round = next_round;
+    }
+    // turn it into a linked list
+    linkedlist_ify(result_array, result);
 }
 
 int main()
 {
     LinkedList *test1 = new LinkedList;
-    int numbers1[3] = { 1,2,3 };
+    int numbers1[3] = { 1,2,5 };
     LinkedList *test2 = new LinkedList;
-    int numbers2[3] = { 4,5,6 };
+    int numbers2[3] = { 4,5,5 };
     LinkedList *result = new LinkedList;
 
     linkedlist_ify(numbers1, test1);
     linkedlist_ify(numbers2, test2);
+    add_these_two(test1, test2, result);
 
     test1->printlist();
     test2->printlist();
-    test1->value_at_node(3);
-    std::cout << result->value_at_node(2) << std::endl;
-
-    std::cout << test1->value_at_node(1) << test1->value_at_node(2) << test1->value_at_node(3) << std::endl;
-    std::cout << test2->value_at_node(1) << test2->value_at_node(2) << test2->value_at_node(3) << std::endl;
+    result->printlist();
 
     delete test1;
     delete test2;
