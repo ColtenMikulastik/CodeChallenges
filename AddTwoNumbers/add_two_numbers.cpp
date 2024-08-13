@@ -168,7 +168,7 @@ class LinkedList
 		i++;
 	    }
 	    // make sure list isn't empty
-	    if(this_node != nullptr && next_node != nullptr)
+	    if(this_node != nullptr)
 	    {
 		return this_node->get_value();
 	    }
@@ -227,8 +227,11 @@ int main()
 
     test1->printlist();
     test2->printlist();
-    
-    int value = test1->value_at_node(1);
+    test1->value_at_node(3);
+    std::cout << result->value_at_node(2) << std::endl;
+
+    std::cout << test1->value_at_node(1) << test1->value_at_node(2) << test1->value_at_node(3) << std::endl;
+    std::cout << test2->value_at_node(1) << test2->value_at_node(2) << test2->value_at_node(3) << std::endl;
 
     delete test1;
     delete test2;
