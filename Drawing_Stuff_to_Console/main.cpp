@@ -65,6 +65,34 @@ class Point: public Drawable
 		~Point(){}
 };
 
+class Line_Segment: public Line
+{
+	private:
+		int low_cut_off, high_cut_off;
+	public:
+		Line_Segment(int t_y_int, int t_slope, int t_low, int t_high): Line(t_slope, t_y_int)
+		{
+			this->low_cut_off = t_low;
+			this->high_cut_off = t_high;
+		}
+
+		bool at_point(int x, int y)
+		{
+			// we will just check x for now
+			if(x >= this->low_cut_off && x <=this->high_cut_off)
+			{
+				if(Line::at_point(x, y))
+				{
+					return true;
+				}
+				else return false;
+			}
+			else return false;
+		}
+	
+		~Line_Segment(){}
+};
+
 bool drawing(int height, int width, Drawable **drawme, int size)
 {
 	// prints the boarder
@@ -124,7 +152,7 @@ int main()
 	for (int i{}; i < size; i++)
 	{
 		char choice {};
-		std::cout << "Line or point? (l/p):";
+		std::cout << "Line, point, or segment? (l/p/s):";
 		std::cin >> choice;
 		if ( choice == 'l' )
 		{
@@ -145,6 +173,22 @@ int main()
 			std::cin >> y;
 			
 			thing[i] = new Point(x,y);
+		}
+		else if ( choice == 's' )
+		{
+			double lower {}, higher {};
+			std::cout << "what would like your lower value to be?" << std::endl;
+			std::cin >> lower;
+			std::cout << "what would like your higher value to be?" << std::endl;
+			std::cin >> higher;
+			double slope {}, y_int{};
+			std::cout << "what would you like the slope to be?" << std::endl;
+			std::cin >> slope;
+			std::cout << "what would you like the y_int to be?" << std::endl;
+			std::cin >> y_int;
+
+			
+			thing[i] = new Line_Segment(y_int, slope, lower, higher);
 		}
 	}
 
