@@ -1,20 +1,8 @@
 
 #include <iostream>
+#include <cmath>
 
-int pow(int base, int pow);
 void int_to_array(int input, int *output, int size);
-
-
-int pow(int base, int pow)
-{
-    int result {1};
-    while(pow != 0)
-    {
-	result = result * base;
-	pow--;
-    }
-    return result;
-}
 
 void int_to_array(int input, int *output, int size)
 {
