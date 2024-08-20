@@ -230,11 +230,14 @@ void add_these_two(LinkedList *left, LinkedList *right,LinkedList *result)
 
 int main()
 {
+    int *numbers1 = new int[3];
+    int *numbers2 = new int[3];
     LinkedList *test1 = new LinkedList;
-    int numbers1[3] = { 1,2,5 };
     LinkedList *test2 = new LinkedList;
-    int numbers2[3] = { 4,5,5 };
     LinkedList *result = new LinkedList;
+
+    int_to_array( 123, numbers1, 3);
+    int_to_array( 123, numbers2, 3);
 
     linkedlist_ify(numbers1, test1);
     linkedlist_ify(numbers2, test2);
@@ -244,6 +247,8 @@ int main()
     test2->printlist();
     result->printlist();
 
+    delete [] numbers1;
+    delete [] numbers2;
     delete test1;
     delete test2;
     delete result;
