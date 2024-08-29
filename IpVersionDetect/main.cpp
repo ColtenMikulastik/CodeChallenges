@@ -36,20 +36,33 @@ void ip_ver_check(std::string input)
 	}
 }
 
+std::vector <int> split(std::string input, char delim)
+{
+	std::vector <int> output = {};
+	int next_index {};
+	while( next_index != -1 )
+	{
+		std::string the_pushback = {};
+		int this_index = next_index;
+		next_index = input.find('.', this_index);
+		
+		for( int i{this_index}; i < next_index; i++) 
+		{
+			the_pushback.push_back(input[i]);
+		}
+		output.push_back(std::stoi(the_pushback));
+	}
+	return output;
+}
 
 bool is_valid_ipv4(std::string input)
 {
 	// check if this input is a valid ipv4 address
+	std::vector <int> split_input = {};
+	split_input = split(input, '.');
+
 
 	return 0;
-}
-
-std::vector <int> split(std::string input, char delim)
-{
-	std::vector <int> output = {};
-
-	output.push_back();
-	return output;
 }
 
 
