@@ -36,12 +36,14 @@ void ip_ver_check(std::string input)
 	}
 }
 
-std::vector <int> split(std::string input, char delim)
+std::vector <std::string> split(std::string input, char delim)
 {
-	std::vector <int> output = {};
+	// create some out of scope variables
+	std::vector <std::string> output = {};
 	int next_index {};
 	while( next_index != -1 )
 	{
+		// create inscope variables
 		std::string the_pushback = {};
 		int this_index = next_index;
 		next_index = input.find('.', this_index);
@@ -50,7 +52,7 @@ std::vector <int> split(std::string input, char delim)
 		{
 			the_pushback.push_back(input[i]);
 		}
-		output.push_back(std::stoi(the_pushback));
+		output.push_back(the_pushback);
 	}
 	return output;
 }
@@ -58,7 +60,7 @@ std::vector <int> split(std::string input, char delim)
 bool is_valid_ipv4(std::string input)
 {
 	// check if this input is a valid ipv4 address
-	std::vector <int> split_input = {};
+	std::vector <std::string> split_input = {};
 	split_input = split(input, '.');
 
 
