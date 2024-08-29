@@ -47,11 +47,12 @@ std::vector <std::string> split(std::string input, char delim)
 		std::string the_pushback = {};
 		int this_index = next_index;
 		next_index = input.find('.', this_index);
-		
+		// loop between the two indexs copying the data into a temp var
 		for( int i{this_index}; i < next_index; i++) 
 		{
 			the_pushback.push_back(input[i]);
 		}
+		// load the temp var into the output
 		output.push_back(the_pushback);
 	}
 	return output;
@@ -62,6 +63,7 @@ bool is_valid_ipv4(std::string input)
 	// check if this input is a valid ipv4 address
 	std::vector <std::string> split_input = {};
 	split_input = split(input, '.');
+	std::cout << split_input[0] << split_input[1] << std::endl;
 
 
 	return 0;
@@ -76,7 +78,9 @@ int main()
 	ip_ver_check(test);
 	std::cout << test2 + " results are: ";
 	ip_ver_check(test2);
-
+	
+	std::string thing = "12.13";
+	is_valid_ipv4(thing);
 
 	return 0;
 
