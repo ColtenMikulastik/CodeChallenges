@@ -1,6 +1,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+
 
 bool has(std::string input, char lookfor)
 {
@@ -35,6 +37,22 @@ void ip_ver_check(std::string input)
 }
 
 
+bool is_valid_ipv4(std::string input)
+{
+	// check if this input is a valid ipv4 address
+
+	return 0;
+}
+
+std::vector <int> split(std::string input, char delim)
+{
+	std::vector <int> output = {};
+
+	output.push_back();
+	return output;
+}
+
+
 int main()
 {
 	std::string test ={"192.168.1.1"};
@@ -43,6 +61,7 @@ int main()
 	ip_ver_check(test);
 	std::cout << test2 + " results are: ";
 	ip_ver_check(test2);
+
 
 	return 0;
 
