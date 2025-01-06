@@ -41,6 +41,7 @@ std::vector <std::string> split(std::string input, char delim)
 	// create some out of scope variables
 	std::vector <std::string> output = {};
 	int next_index {};
+	bool final_char = 0;
 	// loop while next_index is not the final index of the string
 	while( next_index != (input.size() - 1) )
 	{
@@ -49,16 +50,25 @@ std::vector <std::string> split(std::string input, char delim)
 		int this_index = next_index;
 		// if this is the last occurance next_index needs to be the final index
 		next_index = input.find('.', this_index);
-		if (next_index == this_index)
+		if( next_index == this_index )
 		{
 			// assign next_index to the final index of the string
 			next_index = (input.size() - 1);
+			// lazy mode
+			final_char = 1;
 		}
 		// loop between the two indexs copying the data into a temp var
 		for( int i{this_index}; i < next_index; i++) 
 		{
 			the_pushback.push_back(input[i]);
 		}
+		// lazy mode to grab last character
+		if( final_char )
+		{
+			// lazy mode
+			the_pushback.push_back(input[next_index]);
+		}
+
 		// load the temp var into the output
 		output.push_back(the_pushback);
 	}
