@@ -41,12 +41,19 @@ std::vector <std::string> split(std::string input, char delim)
 	// create some out of scope variables
 	std::vector <std::string> output = {};
 	int next_index {};
-	while( next_index != -1 )
+	// loop while next_index is not the final index of the string
+	while( next_index != (input.size() - 1) )
 	{
 		// create inscope variables
 		std::string the_pushback = {};
 		int this_index = next_index;
+		// if this is the last occurance next_index needs to be the final index
 		next_index = input.find('.', this_index);
+		if (next_index == this_index)
+		{
+			// assign next_index to the final index of the string
+			next_index = (input.size() - 1);
+		}
 		// loop between the two indexs copying the data into a temp var
 		for( int i{this_index}; i < next_index; i++) 
 		{
