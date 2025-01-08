@@ -58,7 +58,36 @@ std::vector <std::string> split(std::string input, char delim)
 	return output;
 }
 
-bool is_valid_ipv4(std::string input)
+std::vector <std::string> format_ipv6(std::string input)
+{
+	std::vector<std::string> output = {};
+	// split based on ipv6
+	output = split(input, ':');
+	// add our zero's to format the :: better if there is one
+	if(output.size() < 8)
+	{
+		// loop through the vector
+		for(int i{}; i <= 7; i++)
+		{
+			// find the empty string
+			if(output[i] == "")
+			{
+				// add "0000" until the vector has 8 elements
+				while(output.size() != 8)
+				{
+					output.insert(output.begin() + i, "0000");
+				}
+				// break the loop here incase of duplicates
+				break;
+			}
+		}
+	}
+	// check for un-buffered zeros
+
+	return output;
+}
+
+bool is_valid_ip(std::string input)
 {
 	// check if this input is a valid ipv4 address
 	std::vector <std::string> split_input = {};
@@ -86,11 +115,11 @@ bool is_valid_ipv4(std::string input)
 	}
 	else if (ip_ver_check(input) == 6)
 	{	
-		split_input = split(input, ':');
-		for(std::string split : split_input)
+		// format the string to something easier to programatically search through
+		std::vector <std::string> formatted_string = format_ipv6(input);
+		for(std::string string : formatted_string)
 		{
-			// check if a valid ipv4 address
-			std::cout << split << std::endl;
+			std::cout << string << std::endl;
 		}
 	}
 
@@ -106,8 +135,8 @@ int main()
 	std::cout << test2 + " results are: ipv" << ip_ver_check(test2) << std::endl;
 	
 	// functional ipv4 checking
-	std::string thing = "12.13.14.15";
-	std::cout << is_valid_ipv4(thing) << std::endl;
+	std::string thing = "1050::0005:0600:300c:326b";
+	std::cout << is_valid_ip(thing) << std::endl;
 	return 0;
 
 }
