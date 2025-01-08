@@ -46,7 +46,7 @@ std::vector <std::string> split(std::string input, char delim)
 	while( next_index != (input.size() - 1) )
 	{
 		// create inscope variables
-		std::string the_pushback = {};
+		std::string str_temp = {};
 		int this_index = next_index;
 		// if this is the last occurance next_index needs to be the final index
 		next_index = input.find('.', this_index);
@@ -58,19 +58,19 @@ std::vector <std::string> split(std::string input, char delim)
 			final_char = 1;
 		}
 		// loop between the two indexs copying the data into a temp var
-		for( int i{this_index}; i < next_index; i++) 
+		for( int i{this_index + 1}; i < next_index; i++) 
 		{
-			the_pushback.push_back(input[i]);
+			str_temp.push_back(input[i]);
 		}
 		// lazy mode to grab last character
 		if( final_char )
 		{
 			// lazy mode
-			the_pushback.push_back(input[next_index]);
+			str_temp.push_back(input[next_index]);
 		}
 
 		// load the temp var into the output
-		output.push_back(the_pushback);
+		output.push_back(str_temp);
 	}
 	return output;
 }
@@ -80,7 +80,7 @@ bool is_valid_ipv4(std::string input)
 	// check if this input is a valid ipv4 address
 	std::vector <std::string> split_input = {};
 	split_input = split(input, '.');
-	std::cout << split_input[0] << split_input[1] << std::endl;
+	std::cout << split_input[0] << '\n' << split_input[1] << std::endl;
 
 
 	return 0;
@@ -96,7 +96,7 @@ int main()
 	std::cout << test2 + " results are: ";
 	ip_ver_check(test2);
 	
-	std::string thing = "12.13";
+	std::string thing = "12.13.14.15";
 	is_valid_ipv4(thing);
 
 	return 0;
