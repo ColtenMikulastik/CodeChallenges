@@ -1,5 +1,4 @@
 
-
 run:output.exe
 	./output.exe
 

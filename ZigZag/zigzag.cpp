@@ -66,7 +66,7 @@ class Solution
 
 int main()
 {
-	std::string input = "big ups the whole island, masive its ya boy chet\"ina\" boyaka boyaka errrrrr";
+	std::string input {};
 	int k = 5;
 	std::cout << "Please give a string to zigzag: ";
 	std::cin >> input;

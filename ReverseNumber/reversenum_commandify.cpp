@@ -2,13 +2,12 @@
 #include <iostream>
 #include <cmath>
 
+// trying to make this an exe so I can use it in scripts and stuff lol
 
-// input of function int = 12345
-// output of function int = 54321
-
-
-int reverse(int in)
+int main()
 {
+	int in{};
+	std::cin >> in;
 	// create variables
 	int temp {in}, out {}, decimal_places {};
 
@@ -19,7 +18,6 @@ int reverse(int in)
 		temp = temp / 10;
 	}
 	while (temp != 0);
-	std::cout << "decimal places: " << decimal_places << std::endl;
 
 	// create the variable that defines output's decimal place
 	int real_place {};
@@ -29,30 +27,12 @@ int reverse(int in)
 		int place_val = in / pow(10, i - 1);
 		// remove that value from in
 		in = in - (place_val * pow(10,i - 1));
-		std::cout << "input value now: " << in << std::endl;
-		std::cout << "place value found: " << place_val << std::endl;
 		// add the value to the output variable
 		out = (place_val * pow(10,real_place)) + out;
 		// iterate the inverse of the inputs decimal place
 		real_place++;
-		std::cout << "out is : " << out << std::endl;
-		std::cout << "real place is: " << real_place << std::endl;
-		std::cout << "--------------"<< std::endl;
 	}
 	// return the sum
-	return out;
-}
-
-int main()
-{
-	std::cout << "hi welcome to the reverse number program" << std::endl;
-	while(true)
-	{
-		int val;
-		std::cout << "input variable to test: ";
-		std::cin >> val;
-
-		std::cout << reverse(val) << std::endl;
-	}
+	std::cout << out << std::endl;
 	return 0;
 }
