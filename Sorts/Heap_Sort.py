@@ -1,4 +1,10 @@
 
+
+"""
+this code was originally taken from https://www.geeksforgeeks.org/dsa/heap-sort/
+with some minor changes, and notes written by me :^)
+"""
+
 def heapify(arr, n, i):
     """i is the value of root, n is size of tree, recursive"""
     # Initialize largest as root
